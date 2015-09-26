@@ -19,24 +19,28 @@ function markUserLocation(lat, long, markerText){
     userLocation = marker;
     marker.addListener("position_changed", function () {
         var position = this.getPosition();
-        markAdLocation(position.lat(), position.lng(), 5000);
+        userLocation = marker;
+        markAdLocation();
     });
-    markAdLocation(lat, long, 5000);
+    markAdLocation();
 };
 
-function markAdLocation(lat, long, radius) {
+function markAdLocation() {
     drawAds();
+    var oSearch = getFilterObject();
+    var lat = userLocation.getPosition().lat(),
+        long = userLocation.getPosition().lng(),
+        radius = parseInt(oSearch.radial, 10);
     var latlongForCenter, radius = radius || defaultRadialDistance;
     if (circle) circle.setMap(null);
     latlongForCenter = new google.maps.LatLng(lat, long);
     circle = new google.maps.Circle({
         center:latlongForCenter,
-        radius: 5000,
+        radius: radius,
         fillOpacity: 0.35,
         fillColor: "#FF0000",
         map: map
     });
-    var oSearch = getFilterObject();
     var nearbyAds = searchAdvertisements(userLocation, oSearch);
     if(nearbyAds.length) {
         nearbyAds.forEach(function (objAd) {
