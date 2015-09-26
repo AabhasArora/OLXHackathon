@@ -22,21 +22,22 @@
 <div id="pageHolder" class="tabs container">
     <div class="form-group">
         <div class="col-xs-4">
-            <select class="form-control">
-                <option>Delhi</option>
-                <option>Banglore</option>
+            <select id="cityFilter" data-filterType="city" class="form-control filter-group">
+                <option value="delhi">Delhi</option>
+                <option value="banglore">Banglore</option>
             </select>
         </div>
         <div class="col-xs-4">
-            <select class="form-control">
-                <option>Cars</option>
-                <option>Mobile and Electronics</option>
+            <select id="categoryFilter" data-filterType="category" class="form-control filter-group">
+                <option value="cars">Cars</option>
+                <option value="mobiles">Mobile</option>
+                <option value="bikes">Bikes</option>
             </select>
         </div>
         <div class="col-xs-4">
-            <select class="form-control">
-                <option>500m</option>
-                <option>1km</option>
+            <select id="radialFilter" data-filterType="radial" class="form-control filter-group">
+                <option value="5000">5km</option>
+                <option value="10000">10km</option>
             </select>
         </div>
     </div>
@@ -46,6 +47,7 @@
 <script src="../script/googleMap.js"></script>
 <script src="../script/lib/jquery.js"></script>
 <script src="../script/lib/bootstrap.js"></script>
+<script src="../script/classes/Filter.js"></script>
 <script src="../script/AdvertisementList.js"></script>
 <script src="../script/searchAdvertisements.js"></script>
 <script src="../script/classes/Advertisement.js"></script>

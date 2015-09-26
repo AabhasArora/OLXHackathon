@@ -3,21 +3,21 @@
     {
       "adTitle": "Buy a car",
       "adPrice": 100000,
-      "adCategory": "Cars",
+      "adCategory": "cars",
       "adLatitude": 28.490957443142918,
       "adLongitude": 77.14321831296388
     },
     {
       "adTitle": "Rent a bike",
       "adPrice": 100000,
-      "adCategory": "Bikes",
+      "adCategory": "cars",
       "adLatitude": 28.490957443142918,
       "adLongitude": 77.14686539243165
     },
     {
       "adTitle": "Gift a gadget",
       "adPrice": 1000,
-      "adCategory": "Mobiles",
+      "adCategory": "mobiles",
       "adLatitude": 28.543749389306733,
       "adLongitude": 77.15686539243165
     }

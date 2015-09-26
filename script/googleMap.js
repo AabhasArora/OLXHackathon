@@ -1,5 +1,5 @@
 google.maps.event.addDomListener(window, 'load', initMap);
-var map, circle, searchedAds = [];
+var map, circle, searchedAds = [], userLocation;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
@@ -16,38 +16,28 @@ function markUserLocation(lat, long, markerText){
         });
     map.setCenter(latLong, 24);
     marker.setMap(map);
+    userLocation = marker;
     marker.addListener("position_changed", function () {
         var position = this.getPosition();
-        console.log(position);
-        markAdLocation(position.lat(), position.lng());
+        markAdLocation(position.lat(), position.lng(), 5000);
     });
-    markAdLocation(lat, long);
+    markAdLocation(lat, long, 5000);
 };
 
-function markAdLocation(lat, long) {
-    searchedAds.forEach(function (value) {
-       value.setMap(null);
-    });
-    var latlongForCenter;
+function markAdLocation(lat, long, radius) {
+    drawAds();
+    var latlongForCenter, radius = radius || defaultRadialDistance;
     if (circle) circle.setMap(null);
     latlongForCenter = new google.maps.LatLng(lat, long);
-    circle = new google.maps.Circle({center:latlongForCenter,
+    circle = new google.maps.Circle({
+        center:latlongForCenter,
         radius: 5000,
         fillOpacity: 0.35,
         fillColor: "#FF0000",
-        map: map});
-
-    var oSearch = {
-        searchParam: {
-            latLong: {
-                latitude: lat,
-                longitude: long
-            },
-            radialDistance: undefined
-        },
-        serachType:'searchByLatLong'
-    }
-    var nearbyAds = searchAdvertisements(oSearch);
+        map: map
+    });
+    var oSearch = getFilterObject();
+    var nearbyAds = searchAdvertisements(userLocation, oSearch);
     if(nearbyAds.length) {
         nearbyAds.forEach(function (objAd) {
             var latLong = new google.maps.LatLng(objAd.advertisementCoordinates.latitude, objAd.advertisementCoordinates.longitude),
@@ -101,4 +91,14 @@ function findUserLocation() {
     else {
         alert('Geolocation is not supported in your browser');
     }
+}
+
+function drawAds (){
+    searchedAds.forEach(function (value) {
+        value.setMap(null);
+    });
+}
+
+function drawCircle(){
+
 }

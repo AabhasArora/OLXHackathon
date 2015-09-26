@@ -3,30 +3,40 @@
  */
 var defaultRadialDistance = 5000;
 
-function searchAdvertisements (oSearch){
+function searchAdvertisements (userLocation, oSearch){
     var adList = [];
-    if (oSearch.serachType) {
-        switch (oSearch.serachType) {
-            case 'searchByLatLong':
-                adList = searchByLatLong(oSearch.searchParam);
-                break;
-            default:
-                break;
-        }
+    if (oSearch) {
+        adList = searchByLatLong(userLocation.getPosition().lat(), userLocation.getPosition().lng(), oSearch);
     }
     return adList;
 }
 
-function searchByLatLong (oLatLong) {
-    var searchPoint = new Point(oLatLong.latLong.latitude, oLatLong.latLong.longitude),
+function searchByLatLong (lat, long, filters) {
+    var searchPoint = new Point(lat, long),
         currentPoint = new google.maps.LatLng(searchPoint.latitude, searchPoint.longitude);
-    var radialDistance = oLatLong.radialDistance || defaultRadialDistance;
-    var nearByAds = advertisements.filter(function (value) {
-        var position = new google.maps.LatLng(value.advertisementCoordinates.latitude, value.advertisementCoordinates.longitude);
-        if(google.maps.geometry.spherical.computeDistanceBetween(currentPoint, position) < radialDistance)
-            return true;
-        else
-            return false;
-    });
+    var nearByAds = advertisements;
+    for(var key in filters) {
+        if(key === 'city' && filters[key]){
+
+        }
+        else if(key === 'category' && filters[key]){
+            nearByAds = nearByAds.filter(function (value) {
+                if(value.category === filters[key])
+                    return true;
+                else
+                    return false;
+            });
+        }
+        else if(key === 'radial' && filters[key]){
+            var radialDistance = parseInt(filters[key], 10) || defaultRadialDistance;
+            nearByAds = nearByAds.filter(function (value) {
+                var position = new google.maps.LatLng(value.advertisementCoordinates.latitude, value.advertisementCoordinates.longitude);
+                if(google.maps.geometry.spherical.computeDistanceBetween(currentPoint, position) < radialDistance)
+                    return true;
+                else
+                    return false;
+            });
+        }
+    }
     return nearByAds;
-}
+};
