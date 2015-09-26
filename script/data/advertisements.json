@@ -1,7 +1,7 @@
 {
   "adList": [
     {
-      "adTitle": "Buyacar",
+      "adTitle": "Buy a car",
       "adPrice": 100000,
       "adCategory": "Cars",
       "adLatitude": 28.490957443142918,
@@ -11,8 +11,8 @@
       "adTitle": "Rent a bike",
       "adPrice": 100000,
       "adCategory": "Bikes",
-      "adLatitude": 28.52414403757073,
-      "adLongitude": 77.18570450375978
+      "adLatitude": 28.490957443142918,
+      "adLongitude": 77.14686539243165
     },
     {
       "adTitle": "Gift a gadget",
