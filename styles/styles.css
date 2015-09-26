@@ -1,0 +1,24 @@
+html, body {
+    height: 100%; margin: 0; padding: 0;
+}
+
+body {
+    padding-top: 70px;
+}
+
+#map {
+    height: 400px;
+    float: left;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+#pageHolder {
+    min-height: 100%;
+}
+
+.form-group {
+    width: 100%;
+    float: left;
+}

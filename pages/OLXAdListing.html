@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OLX Map Based Listing</title>
+    <link href="../styles/lib/bootstrap.css" rel="stylesheet" />
+    <link href="../styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">OLX Map Based Listing</a>
+        </div>
+    </div>
+</nav>
+<div id="pageHolder" class="tabs container">
+    <div class="form-group">
+        <div class="col-xs-4">
+            <select class="form-control">
+                <option>Delhi</option>
+                <option>Banglore</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <select class="form-control">
+                <option>Cars</option>
+                <option>Mobile and Electronics</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
+            <select class="form-control">
+                <option>500m</option>
+                <option>1km</option>
+            </select>
+        </div>
+    </div>
+    <div id="map"></div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>
+<script src="../script/googleMap.js"></script>
+<script src="../script/lib/jquery.js"></script>
+<script src="../script/lib/bootstrap.js"></script>
+<script src="../script/AdvertisementList.js"></script>
+<script src="../script/searchAdvertisements.js"></script>
+<script src="../script/classes/Advertisement.js"></script>
+<script src="../script/classes/Point.js"></script>
+</body>
+</html>

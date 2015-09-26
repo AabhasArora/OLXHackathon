@@ -1,0 +1,25 @@
+{
+  "adList": [
+    {
+      "adTitle": "Buyacar",
+      "adPrice": 100000,
+      "adCategory": "Cars",
+      "adLatitude": 28.490957443142918,
+      "adLongitude": 77.14321831296388
+    },
+    {
+      "adTitle": "Rent a bike",
+      "adPrice": 100000,
+      "adCategory": "Bikes",
+      "adLatitude": 28.52414403757073,
+      "adLongitude": 77.18570450375978
+    },
+    {
+      "adTitle": "Gift a gadget",
+      "adPrice": 1000,
+      "adCategory": "Mobiles",
+      "adLatitude": 28.543749389306733,
+      "adLongitude": 77.15686539243165
+    }
+  ]
+}
